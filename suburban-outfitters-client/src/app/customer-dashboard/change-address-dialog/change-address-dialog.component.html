@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Update Shipping Address</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Shipping Address</mat-label>
+    <input matInput [(ngModel)]="data.address">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.address" cdkFocusInitial>Save</button>
+</div>

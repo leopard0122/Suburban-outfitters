@@ -1,0 +1,36 @@
+<br>
+<div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="16px grid"
+  fxLayoutGap.xs="0">
+  <div class="item" fxFlex="40%">
+
+
+    <mat-card>
+      <img mat-card-image [src]="item.image_url" alt="Product Image" routerData="item">
+    </mat-card>
+    <br>
+    <button mat-raised-button color="primary" class="navigation-button" routerLink="/products" routerLinkActive="active">Back to Search</button>
+  </div>
+  <div class="item" fxFlex="20%">
+    <h2>Name: {{item.name}}</h2>
+    <p>{{item.description}}</p>
+    <h2>Price: ${{item.price}}</h2>
+    <br />
+    <mat-chip-list>
+      <mat-chip *ngIf="item.inventory && item.inventory.quantity > 0" color="primary" selected>{{item.inventory.quantity}} left in stock!</mat-chip>
+      <mat-chip *ngIf="item.inventory && item.inventory.quantity === 0" color="accent" selected>Out of stock!</mat-chip>
+    </mat-chip-list>
+    <br />
+    <button mat-button shareButton="facebook" style="color: #FFFFFF; background-color: #3b5998;">
+      Share 
+      <fa-icon [icon]="faFacebookF" size="lg"></fa-icon>
+    </button>
+    <br />
+    <br />
+    <button mat-raised-button color="primary" (click)="addItemToCart(item)" [disabled]="item.inventory.quantity === 0">Add to Cart</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button mat-raised-button color="primary" class="btn-padding-top" routerLink="/cart" routerLinkActive="active" >Checkout</button>
+  </div>
+</div>

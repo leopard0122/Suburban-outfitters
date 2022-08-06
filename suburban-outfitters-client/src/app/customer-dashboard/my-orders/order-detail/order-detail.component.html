@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="column" fxLayout="column" fxLayoutAlign="center center">
+    <button mat-raised-button color="accent" routerLink="/customer-dashboard/" routerLinkActive="active" >Back to My Orders</button>
+    <h1>ORDER #{{order.customer_id}}</h1>
+
+    <div>
+      <h3>Order Details</h3>
+      <table style="width:100%">
+        <tr>
+          <th>Product</th>
+          <th>Quanitity</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let item of order.orderlineitems">
+          <th>{{item.name}}</th>
+          <th>{{item.quantity}}</th>
+          <th>{{item.price}}</th>
+          <th>
+            <span mat-button *ngIf="item.is_returned === 1">Item has been returned.</span>
+            <button mat-button *ngIf="item.is_returned === 0" color="primary" (click)="onReturnItem(item)">Return item</button>
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>TOTAL {{order.order_total | currency}}</th>
+          <th></th>
+        </tr>
+      </table>
+      <h2>Shipping Information</h2>
+      <p>Customer Name: {{authService.currentCustomer.name}}</p>
+      <p>Shipping Address: {{authService.currentCustomer.address}}</p>
+      <h2>Payment Information</h2>
+      <p>Card Holder Name: {{authService.currentUserPaymentMethods.first_name}} {{authService.currentUserPaymentMethods.last_name}}</p>
+      <p>Credit Card: {{authService.currentUserPaymentMethods.card_number}}</p>
+      <p>Billing Address: Same as Shipping Address</p>
+    </div>
+  </div>
+</div>

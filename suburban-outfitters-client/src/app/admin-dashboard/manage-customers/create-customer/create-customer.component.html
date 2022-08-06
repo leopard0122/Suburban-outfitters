@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <span>Create Customer</span>
+</mat-toolbar>
+<mat-card>
+  <form class="example-form" [formGroup]="newFormGroup" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Customer Name</mat-label>
+      <input matInput formControlName="title" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" placeholder="Ex. 123 Sesame Street" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" placeholder="Ex. 801-385-2444" required>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button color="primary" (click)="create()">Create New Customer</button>
+</mat-card>

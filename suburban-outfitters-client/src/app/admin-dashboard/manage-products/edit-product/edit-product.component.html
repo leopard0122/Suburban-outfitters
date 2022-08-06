@@ -1,0 +1,52 @@
+<mat-toolbar>
+  <span>Edit Inventory</span>
+</mat-toolbar>
+<mat-card>
+<form class="example-form" [formGroup]="productQuantityFormGroup" >
+  <mat-form-field class="example-full-width">
+    <mat-label>Quantity</mat-label>
+    <input matInput formControlName="quantity" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="updateQuantity()">Update Quantity</button>
+</mat-card>
+<mat-toolbar>
+  <span>Edit Product</span>
+</mat-toolbar>
+<mat-card>
+<form class="example-form" [formGroup]="editFormGroup" >
+  <mat-form-field class="example-full-width">
+    <mat-label>Product Name</mat-label>
+    <input matInput formControlName="name" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Size</mat-label>
+    <input matInput formControlName="size" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>image Url</mat-label>
+    <input matInput formControlName="image_url" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Gender</mat-label>
+    <input matInput formControlName="gender" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="submit()">Submit Changes</button>
+</mat-card>
+

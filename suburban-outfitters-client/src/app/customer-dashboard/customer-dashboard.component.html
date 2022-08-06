@@ -1,0 +1,48 @@
+<br>
+<h1>
+    Customer Dashboard
+</h1>
+<div class="row">
+    <div class="column" fxLayout="column" fxLayoutAlign="center center">
+        <h2>My Profile</h2>
+        <p>Name: {{authService.currentUser.firstName}} {{authService.currentUser.lastName}}</p>
+        <p>Address: {{authService.currentCustomer.address}}</p>
+        <br>
+        <button mat-raised-button color="primary" (click)="onChangeShippingAddress()">Change Shipping Address</button>
+        <br>
+        <p>Email Address: {{authService.currentUser.email}}</p>
+        <br>
+        <button mat-raised-button color="primary" (click)="onChangeEmailAddress()">Change Email
+            Address</button>
+        <br>
+        <button mat-raised-button color="primary" (click)="onChangePassword()">Change Password</button>
+        <br>
+        <button mat-raised-button color="warn" (click)="onDeleteAccount()">Delete Account</button>
+    </div>
+    <div class="column" fxLayout="column" fxLayoutAlign="center center">
+        <h2>My Payment Methods</h2>
+        <br>
+        <mat-card>
+            <mat-list>
+                <div mat-subheader>Payment Methods</div>
+                <mat-list-item *ngFor="let card of credit_cards">
+                  <mat-icon mat-list-icon>credit_card</mat-icon>
+                  <div mat-line>{{card.first_name}}</div>
+                  <div mat-line>{{card.last_name}}</div>
+                  <div mat-line>{{card.card_number}}</div>
+                  <div mat-line> {{card.expiration}} </div>
+                </mat-list-item>
+              </mat-list>           
+        </mat-card>
+        <br>
+        <button mat-raised-button color="primary" (click)="onChangePayment()">Change Credit Card on File</button>
+    </div>
+</div>
+<div class="row">
+    <div class="column" fxLayout="column" fxLayoutAlign="center center">
+        <h2>
+            My Orders
+        </h2>
+        <app-my-orders [orders]="orders"></app-my-orders>
+    </div>
+</div>

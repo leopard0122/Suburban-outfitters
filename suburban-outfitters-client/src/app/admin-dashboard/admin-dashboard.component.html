@@ -1,0 +1,13 @@
+<div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="16px grid"
+  fxLayoutGap.xs="0">
+  <div class="item" fxFlex="60%" >
+    <nav mat-tab-nav-bar [backgroundColor]="'accent'">
+      <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        {{link.label}}
+      </a>
+      </nav>    
+  </div>
+  <div class="item" fxFlex="60%" >
+    <router-outlet></router-outlet>
+  </div>
+</div>

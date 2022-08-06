@@ -1,0 +1,45 @@
+<mat-toolbar>
+  <span>Edit Supplier</span>
+</mat-toolbar>
+<mat-card>
+<form class="example-form" [formGroup]="editFormGroup" >
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Phone</mat-label>
+    <input matInput formControlName="phone" placeholder="Ex. Chong Oh" required>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="submit()">Submit Changes</button>
+</mat-card>
+
+<mat-toolbar>
+  <span>Inventory </span>
+</mat-toolbar>
+<mat-card>
+  <mat-list>
+    <div mat-subheader>Units</div>
+    
+    <mat-list-item *ngFor="let inventoryitem of inventory_units">
+      <mat-icon mat-list-icon>open_with</mat-icon>
+      <div mat-line>{{inventoryitem.product ? inventoryitem.product.name : ''}}</div>
+      <div mat-line>{{inventoryitem.product ? inventoryitem.product.description : ''}}</div>
+      <div mat-line>Current In Stock Inventory: {{inventoryitem.quantity}}</div>
+    </mat-list-item>
+  </mat-list>      
+
+</mat-card>

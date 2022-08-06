@@ -1,0 +1,7 @@
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let order of orders">
+        <div mat-line>Order #{{order.id}} {{order.created_at | date}}</div>
+        <div mat-line>Status: {{order.order_status_id}}</div>
+        <button mat-raised-button color="primary" class="navigation-button" routerLink="/order-detail/{{order.id}}" routerLinkActive="active">View Order</button>
+  </mat-list-item>
+</mat-list>

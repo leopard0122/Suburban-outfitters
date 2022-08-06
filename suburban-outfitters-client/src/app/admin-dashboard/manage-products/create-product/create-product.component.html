@@ -1,0 +1,38 @@
+<mat-toolbar>
+  <span>Create Product</span>
+</mat-toolbar>
+<mat-card>
+<form class="example-form" [formGroup]="newFormGroup" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Product Name</mat-label>
+      <input matInput formControlName="productName" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Size</mat-label>
+      <input matInput formControlName="size" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>image Url</mat-label>
+      <input matInput formControlName="imageUrl" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Gender</mat-label>
+      <input matInput formControlName="gender" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="type" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="create()">Create New Product</button>
+</mat-card>

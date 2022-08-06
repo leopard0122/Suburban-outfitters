@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Update Credit Card</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="data.first_name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="data.last_name">
+  </mat-form-field>  
+  <mat-form-field appearance="outline">
+    <mat-label>Card Number</mat-label>
+    <input matInput [(ngModel)]="data.card_number">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Exp</mat-label>
+    <input matInput [(ngModel)]="data.expiration">
+  </mat-form-field>  
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

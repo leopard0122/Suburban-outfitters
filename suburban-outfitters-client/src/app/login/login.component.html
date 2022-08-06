@@ -1,0 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="login-container">
+  <mat-card class="login-card">
+    <mat-card-content>
+      <h1 class="text-center">Login</h1>
+      <form [formGroup]="loginFormGroup" >
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Username or Email" formControlName="email"  name="username" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Password" formControlName="password"  type="password" name="password" required>
+          </mat-form-field>
+          <br />
+          <button mat-raised-button color="primary" (click)="clickedLogin()">Login</button>
+          <br />
+          <br />
+          <h3 class="text-center">Don't have an account?</h3>
+          <button mat-raised-button color="primary" routerLink="/sign-up">Sign Up!</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

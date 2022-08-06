@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <span>Create Supplier</span>
+</mat-toolbar>
+<mat-card>
+<form class="example-form" [formGroup]="newFormGroup" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="create()">Create New Supplier</button>
+</mat-card>

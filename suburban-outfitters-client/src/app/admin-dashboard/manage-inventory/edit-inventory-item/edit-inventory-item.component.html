@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <span>Edit Inventory</span>
+</mat-toolbar>
+<mat-card>
+<form class="example-form" [formGroup]="editFormGroup" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Inventory ID</mat-label>
+      <input matInput formControlName="InventoryID" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Product ID</mat-label>
+      <textarea matInput formControlName="ProductID" placeholder="Ex. 10"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Quantity</mat-label>
+      <textarea matInput formControlName="Quantity" placeholder="Ex. 100"></textarea>
+    </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="submit()">Submit Changes</button>
+</mat-card>

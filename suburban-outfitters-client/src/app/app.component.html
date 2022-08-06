@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" role="banner">
+  <mat-toolbar-row>
+    <button mat-button routerLink="/home" routerLinkActive="active">Suburban Outfitters</button>
+    <div class="spacer"></div>
+    <button mat-button class="navigation-button" routerLink="/products" routerLinkActive="active">Products</button>
+    <button mat-button class="navigation-button" routerLink="/login" routerLinkActive="active" *ngIf="!authService.currentUser">Login</button>
+    <button mat-button class="navigation-button" (click)="logout()" *ngIf="authService.currentUser && authService.currentUser.email">Logout</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item disabled>{{(authService.currentUser ? "Email: " + authService.currentUser.email : '')}}</button>
+      <button mat-menu-item disabled>{{(authService.currentUser ? "Role: " + authService.currentUser.role : '')}}</button>
+      <button mat-menu-item routerLink="/customer-dashboard" routerLinkActive="active">My Profile</button>
+    </mat-menu>
+    <button mat-icon-button routerLink="/admin-dashboard" routerLinkActive="active">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/cart">
+      <mat-icon [matBadge]="cartItemCount$ | async" matBadgeSize="small" matBadgePosition="below after" matBadgeColor="accent">shopping_cart
+      </mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

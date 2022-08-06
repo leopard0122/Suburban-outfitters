@@ -1,0 +1,117 @@
+<mat-horizontal-stepper class="checkout-stepper-background" linear="true" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Review Cart</ng-template>
+    <div fxLayout="column wrap" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="20px grid"
+      fxLayoutGap.xs="200px">
+      <h2 *ngIf="(cartItemCount$ | async) === 0">Cart is Empty</h2>
+      <mat-accordion fxFlex="75%">
+        <mat-expansion-panel *ngFor="let item of cartItems$ | async;">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+              <span>Quantity: {{item.quantity}}</span>
+              <span style="padding-left: 16px;">Price: {{item.quantity * item.price | currency}}</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="text-center">
+            <button mat-raised-button color="warn" class="btn-padding-top" (click)="onRemoveItemFromCart(item)">Remove
+              Item</button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <div>
+        <button mat-raised-button matStepperNext color="primary" class="btn-padding-top"
+          [disabled]="(cartItemCount$ | async) === 0">Checkout</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="shippingForm">
+    <form [formGroup]="shippingForm" ngxsForm="cartState.shippingForm">
+      <div fxLayout="column wrap" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="20px grid"
+        fxLayoutGap.xs="200px">
+        <ng-template matStepLabel>Shipping Info</ng-template>
+        <mat-form-field fxFlex="50%">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" required>
+        </mat-form-field>
+        <mat-form-field fxFlex="50%">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" required>
+        </mat-form-field>
+        <mat-form-field fxFlex="50%">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" required>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperNext color="primary" [disabled]="!shippingForm.valid">Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="paymentForm">
+    <form [formGroup]="paymentForm" ngxsForm="cartState.paymentForm">
+      <div fxLayout="column wrap" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="20px grid"
+        fxLayoutGap.xs="200px">
+        <ng-template matStepLabel>Payment Info</ng-template>
+        <mat-form-field fxFlex="50%">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" required>
+        </mat-form-field>
+        <mat-form-field fxFlex="50%">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" required>
+        </mat-form-field>
+        <mat-form-field fxFlex="50%">
+          <mat-label>Credit Card #</mat-label>
+          <input matInput formControlName="cardNumber" placeholder="5555 5555 5555 5555" required>
+        </mat-form-field>
+        <mat-form-field fxFlex="50%">
+          <mat-label>Expiration Date</mat-label>
+          <input matInput formControlName="expiration" placeholder="0723" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperNext color="primary" [disabled]="!paymentForm.valid">Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Complete Order</ng-template>
+    <div style="color: white;">
+      <h2>Order Details</h2>
+      <table style="width:100%">
+        <tr>
+          <th>Product</th>
+          <th>Quanitity</th>
+          <th>Price</th>
+        </tr>
+        <tr *ngFor="let item of cartItems$ | async;">
+          <th>{{item.name}}</th>
+          <th>{{item.quantity}}</th>
+          <th>{{item.price | currency}}</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>TOTAL {{total$ | async | currency}}</th>
+        </tr>
+      </table>
+      <h2>Shipping Information</h2>
+      <p>Customer Name: {{shippingForm.get("firstName").value}} {{shippingForm.get("lastName").value}}</p>
+      <p>Shipping Address: {{shippingForm.get("address").value}}</p>
+      <h2>Payment Information</h2>
+      <p>Card Holder Name: {{paymentForm.get("firstName").value}} {{paymentForm.get("lastName").value}}</p>
+      <p>Credit Card: {{paymentForm.get("cardNumber").value}}</p>
+      <p>Billing Address: Same as Shipping Address</p>
+    </div>
+    <div class="text-center">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" (click)="onSubmitOrder()">Complete Order</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

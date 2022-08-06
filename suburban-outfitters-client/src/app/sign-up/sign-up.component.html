@@ -1,0 +1,32 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="login-container">
+    <mat-card class="login-card">
+      <mat-card-content>
+        <h1 class="text-center">Sign-Up</h1>
+        <form [formGroup]="registerFormGroup">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Enter First Name" formControlName="firstName" name="firstName" required> 
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Enter Last Name" formControlName="lastName" name="lastName" required> 
+            </mat-form-field>            
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="email" formControlName="email" name="email" required> 
+            </mat-form-field>            
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Confirm Password" formControlName="c_password" type="password" name="c_password" required>
+            </mat-form-field>
+            <br />
+            <button mat-raised-button color="primary" (click)="clickedSignUp()">Sign Up!</button>
+            <br />
+            <br />
+              <h3 class="text-center">Already have an account?</h3>
+              <button mat-raised-button color="accent" routerLink="/login" routerLinkActive="active">Click here to Login</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
